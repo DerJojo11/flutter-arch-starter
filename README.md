@@ -1,4 +1,4 @@
-# bau_recht
+# Flutter Architecture Starter Template
 
 A new Flutter project.
 
