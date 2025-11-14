@@ -1,4 +1,4 @@
-# Flutter Architecture Starter Template
+# Flutter Architecture Starter Template (WIP)
 
 Mein „Opinionated“ Flutter-Template mit klaren Layern, neutraler Lokalisierung, DI, Routing und State-Management – ready to code.
 
