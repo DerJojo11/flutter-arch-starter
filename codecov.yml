@@ -1,0 +1,21 @@
+codecov:
+  require_ci_to_pass: true
+
+comment:
+  layout: "reach, diff, files"
+  behavior: default
+  require_changes: false
+
+coverage:
+  precision: 2
+  range: "60..100"
+  round: down
+  status:
+    project:
+      default:
+        target: auto
+        threshold: 1% # bis zu 1% Rückgang ok
+    patch:
+      default:
+        target: 80% # neue/änderte Zeilen sollen mind. 80% haben
+        threshold: 0.5%
