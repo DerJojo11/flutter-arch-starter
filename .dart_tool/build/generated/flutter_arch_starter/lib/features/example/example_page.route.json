@@ -1,0 +1,1 @@
+{"routes":[{"name":null,"pathParams":[],"pageType":{"import":"package:flutter_arch_starter/features/example/example_page.dart","name":"ExamplePage","isNullable":false,"isRecordType":false},"className":"ExamplePage","parameters":[],"hasWrappedRoute":false,"hasConstConstructor":true,"deferredLoading":null}],"inputPath":"lib/features/example/example_page.dart","inputHash":0}

@@ -3,7 +3,7 @@ import 'package:flutter_arch_starter/l10n/generated/app_localizations.dart';
 import 'package:flutter_arch_starter/shared/index.dart';
 
 extension BuildContextExtension on BuildContext {
-  IRouter get router => getIt<IRouter>();
+  IRouter get appRouter => getIt<IRouter>();
 
   AppLocalizations get l10n {
     try {
