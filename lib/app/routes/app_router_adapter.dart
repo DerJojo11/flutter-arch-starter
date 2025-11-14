@@ -28,6 +28,6 @@ class AppRouterAdapter implements IRouter {
     if (route is PageRouteInfo<T>) {
       return route;
     }
-    throw UnimplementedError('The provided route is not of type PageRouteInfo<T>');
+    throw AssertionError('The provided route is not of type PageRouteInfo<T>');
   }
 }

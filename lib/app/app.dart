@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_arch_starter/app/routes/app_router.dart';
+import 'package:flutter_arch_starter/l10n/generated/app_localizations.dart';
 import 'package:flutter_arch_starter/shared/get_it.dart';
 import 'package:flutter_arch_starter/shared/theme/blocs/theme/theme_bloc.dart';
 import 'package:flutter_arch_starter/shared/theme/widgets/app_theme.dart';
@@ -31,6 +32,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           routerConfig: getIt<AppRouter>().config(),
           theme: theme,
           localizationsDelegates: const [
+            AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,

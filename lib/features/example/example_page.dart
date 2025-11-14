@@ -11,7 +11,7 @@ class ExamplePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(context.l10n.helloWorld)),
-      body: Center(child: Text(context.l10n.helloWorld)),
+      body: const Placeholder(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => context.appRouter.push(ExampleDetailsRoute(id: '42')),
         child: const Icon(Icons.add),
