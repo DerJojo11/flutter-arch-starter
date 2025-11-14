@@ -1,4 +1,5 @@
-# Flutter Architecture Starter Template (WIP)
+# Flutter Architecture Starter Template (WIP) [![codecov](https://codecov.io/gh/DerJojo11/flutter-arch-starter/branch/main/graph/badge.svg)](https://codecov.io/gh/DerJojo11/flutter-arch-starter)
+
 
 Mein „Opinionated“ Flutter-Template mit klaren Layern, neutraler Lokalisierung, DI, Routing und State-Management – ready to code.
 
