@@ -1,7 +1,7 @@
 // Ignore covergare for this file, since it is generated code.
 // coverage:ignore-file
 
-import 'package:bau_recht/shared/get_it.dart';
+import 'package:flutter_arch_starter/shared/get_it.dart';
 import 'package:injectable/injectable.dart';
 
 import 'injectable.config.dart';

@@ -1,5 +1,5 @@
 // test/spacings_test.dart
-import 'package:bau_recht/shared/theme/tokens/spacings.dart';
+import 'package:flutter_arch_starter/shared/index.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -1,5 +1,5 @@
-import 'package:bau_recht/shared/theme/tokens/color_tokens.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_arch_starter/shared/index.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

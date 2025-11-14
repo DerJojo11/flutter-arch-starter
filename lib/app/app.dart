@@ -1,9 +1,8 @@
-import 'package:bau_recht/app/routes/app_router.dart';
-import 'package:bau_recht/shared/get_it.dart';
-import 'package:bau_recht/shared/theme/blocs/theme/theme_bloc.dart';
-import 'package:bau_recht/shared/theme/extensions/gradient_extension.dart';
-import 'package:bau_recht/shared/theme/widgets/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_arch_starter/app/routes/app_router.dart';
+import 'package:flutter_arch_starter/shared/get_it.dart';
+import 'package:flutter_arch_starter/shared/theme/blocs/theme/theme_bloc.dart';
+import 'package:flutter_arch_starter/shared/theme/widgets/app_theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -39,12 +38,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           supportedLocales: const [
             Locale('de'), // German
           ],
-          builder: (context, child) => DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: Theme.of(context).extension<AppGradients>()?.background,
-            ),
-            child: child ?? const SizedBox.shrink(),
-          ),
         ),
       ),
     );

@@ -1,4 +1,4 @@
-name: flutter-arch-starter # <-- TODO rename after using the template
+name: flutter_arch_starter # <-- TODO rename after using the template
 description: Starter with app/shared/features + custom layer lint + neutral l10n
 publish_to: "none"
 

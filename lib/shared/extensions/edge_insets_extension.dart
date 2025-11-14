@@ -1,5 +1,5 @@
-import 'package:bau_recht/shared/theme/tokens/spacings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_arch_starter/shared/index.dart';
 
 extension EdgeInsetsExtension on EdgeInsets {
   static EdgeInsets padding({
@@ -23,12 +23,7 @@ extension EdgeInsetsExtension on EdgeInsets {
     );
     assert(
       all == null ||
-          (vertical == null &&
-              horizontal == null &&
-              left == null &&
-              top == null &&
-              right == null &&
-              bottom == null),
+          (vertical == null && horizontal == null && left == null && top == null && right == null && bottom == null),
       'If "all" is provided, no other padding values should be provided.',
     );
     assert(

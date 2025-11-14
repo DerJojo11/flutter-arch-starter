@@ -1,6 +1,5 @@
-import 'package:bau_recht/shared/extensions/edge_insets_extension.dart';
-import 'package:bau_recht/shared/theme/tokens/spacings.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_arch_starter/shared/index.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -12,52 +11,39 @@ void main() {
       );
     });
 
-    test(
-        'expect throws AssertionError if “all” is used together with other values.',
-        () {
+    test('expect throws AssertionError if “all” is used together with other values.', () {
       expect(
-        () => EdgeInsetsExtension.padding(
-            all: Spacings.small, left: Spacings.small),
+        () => EdgeInsetsExtension.padding(all: Spacings.small, left: Spacings.small),
         throwsA(isA<AssertionError>()),
       );
       expect(
-        () => EdgeInsetsExtension.padding(
-            all: Spacings.small, horizontal: Spacings.small),
+        () => EdgeInsetsExtension.padding(all: Spacings.small, horizontal: Spacings.small),
         throwsA(isA<AssertionError>()),
       );
       expect(
-        () => EdgeInsetsExtension.padding(
-            all: Spacings.small, vertical: Spacings.small),
+        () => EdgeInsetsExtension.padding(all: Spacings.small, vertical: Spacings.small),
         throwsA(isA<AssertionError>()),
       );
     });
 
-    test(
-        'expect throws AssertionError if “vertical” is used together with ‘all’ or “horizontal”.',
-        () {
+    test('expect throws AssertionError if “vertical” is used together with ‘all’ or “horizontal”.', () {
       expect(
-        () => EdgeInsetsExtension.padding(
-            vertical: Spacings.small, all: Spacings.medium),
+        () => EdgeInsetsExtension.padding(vertical: Spacings.small, all: Spacings.medium),
         throwsA(isA<AssertionError>()),
       );
       expect(
-        () => EdgeInsetsExtension.padding(
-            vertical: Spacings.small, horizontal: Spacings.medium),
+        () => EdgeInsetsExtension.padding(vertical: Spacings.small, horizontal: Spacings.medium),
         throwsA(isA<AssertionError>()),
       );
     });
 
-    test(
-        'expect Throws AssertionError if “horizontal” is used together with ‘all’ or "vertical".',
-        () {
+    test('expect Throws AssertionError if “horizontal” is used together with ‘all’ or "vertical".', () {
       expect(
-        () => EdgeInsetsExtension.padding(
-            horizontal: Spacings.small, all: Spacings.medium),
+        () => EdgeInsetsExtension.padding(horizontal: Spacings.small, all: Spacings.medium),
         throwsA(isA<AssertionError>()),
       );
       expect(
-        () => EdgeInsetsExtension.padding(
-            horizontal: Spacings.small, vertical: Spacings.medium),
+        () => EdgeInsetsExtension.padding(horizontal: Spacings.small, vertical: Spacings.medium),
         throwsA(isA<AssertionError>()),
       );
     });
@@ -98,8 +84,7 @@ void main() {
       const r = Spacings.medium;
       const b = Spacings.large;
 
-      final p =
-          EdgeInsetsExtension.padding(left: l, top: t, right: r, bottom: b);
+      final p = EdgeInsetsExtension.padding(left: l, top: t, right: r, bottom: b);
       expect(
           p,
           EdgeInsets.only(
@@ -110,9 +95,7 @@ void main() {
           ));
     });
 
-    test(
-        'expect individual value overrides group value: left overrides horizontal',
-        () {
+    test('expect individual value overrides group value: left overrides horizontal', () {
       const h = Spacings.medium;
       const l = Spacings.small;
 
@@ -123,9 +106,7 @@ void main() {
       expect(p.bottom, 0);
     });
 
-    test(
-        'expect individual value overrides group value: top overrides vertical',
-        () {
+    test('expect individual value overrides group value: top overrides vertical', () {
       const v = Spacings.medium;
       const t = Spacings.large;
 

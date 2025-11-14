@@ -1,6 +1,5 @@
-import 'package:bau_recht/shared/theme/extensions/gradient_extension.dart';
-import 'package:bau_recht/shared/theme/tokens/color_tokens.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_arch_starter/shared/index.dart';
 
 ThemeData get lightTheme {
   return ThemeData(
@@ -10,9 +9,6 @@ ThemeData get lightTheme {
       backgroundColor: Colors.transparent,
     ),
     useMaterial3: true,
-    extensions: [
-      AppGradients.light(),
-    ],
   );
 }
 

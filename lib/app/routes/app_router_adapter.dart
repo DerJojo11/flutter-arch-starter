@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:bau_recht/app/routes/app_router.dart';
-import 'package:bau_recht/shared/router/i_router.dart';
+import 'package:flutter_arch_starter/app/routes/app_router.dart';
+import 'package:flutter_arch_starter/shared/router/i_router.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IRouter)

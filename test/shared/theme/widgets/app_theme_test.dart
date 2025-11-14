@@ -1,8 +1,6 @@
-import 'package:bau_recht/shared/theme/blocs/theme/theme_bloc.dart';
-import 'package:bau_recht/shared/theme/variants/light_theme.dart';
-import 'package:bau_recht/shared/theme/widgets/app_theme.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_arch_starter/shared/index.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

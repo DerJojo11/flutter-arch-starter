@@ -1,7 +1,5 @@
-import 'package:bau_recht/shared/theme/blocs/theme/theme_bloc.dart';
-import 'package:bau_recht/shared/theme/variants/dark_theme.dart';
-import 'package:bau_recht/shared/theme/variants/light_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_arch_starter/shared/index.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 typedef AppThemeBuilder = Widget Function(

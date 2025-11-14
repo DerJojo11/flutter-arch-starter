@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route_generator/utils.dart';
-import 'package:bau_recht/app/routes/app_router.dart';
-import 'package:bau_recht/app/routes/app_router.gr.dart';
+import 'package:flutter_arch_starter/app/index.dart';
+import 'package:flutter_arch_starter/app/routes/app_router.gr.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -29,9 +29,9 @@ void main() {
       return route!;
     }
 
-    test('expect has $HomeRoute as initial route', () {
-      final AutoRoute route = getRoute<HomeRoute>();
-      expect(route.page, HomeRoute.page);
+    test('expect has $ExampleRoute as initial route', () {
+      final AutoRoute route = getRoute<ExampleRoute>();
+      expect(route.page, ExampleRoute.page);
       expect(route.initial, isTrue);
     });
   });

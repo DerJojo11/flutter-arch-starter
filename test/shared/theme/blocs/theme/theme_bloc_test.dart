@@ -1,6 +1,6 @@
-import 'package:bau_recht/shared/theme/blocs/theme/theme_bloc.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_arch_starter/shared/index.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
