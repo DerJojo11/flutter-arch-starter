@@ -8,13 +8,31 @@ Stack: Flutter, AutoRoute, get_it + injectable, Bloc, Freezed, gen_l10n
 
 ## Features
 
-- Saubere Layer: app/ (Composition Root), features/ (Domänen), shared/ (wiederverwendbar), l10n/ (neutrale Übersetzungen)
-- Routing mit AutoRoute (typisierte Routen, MaterialApp.router)
-- DI via get_it + injectable (Composition Root + Generator)
-- State mit flutter_bloc (inkl. bloc_test + mocktail)
-- Freezed für Models/Unions
-- L10n: ein zentraler Satz ARB-Dateien unter lib/l10n/ (kein Import aus app/ nötig)
-- CI-ready (GitHub Actions Workflow vorbereitet)
+- 🔧 **Klare Projektstruktur**
+  - `app/` – Composition Root (Router, DI, App-Wiring)
+  - `features/` – Fachbereiche / Screens / Business-Logik
+  - `shared/` – wiederverwendbare, feature-unabhängige Bausteine
+  - `l10n/` – neutrale Übersetzungen (gen_l10n)
+- 🧭 **Routing mit AutoRoute**
+  - typisierte Routen
+  - `MaterialApp.router` Setup
+- 🧩 **Dependency Injection**
+  - `get_it` als Service Locator
+  - `injectable` für Codegenerierung
+- 🔄 **State Management mit Bloc**
+  - `flutter_bloc`
+  - Test-Setup mit `bloc_test` + `mocktail`
+- ❄️ **Freezed**
+  - Models & Unions
+- 🌐 **Lokalisierung via gen_l10n**
+  - zentrale ARB-Files
+- ✅ **Custom Lints**
+  - erzwingen Layer-Regeln:
+    - `shared` bleibt unabhängig
+    - Features kennen sich untereinander nicht
+- 🧪 **CI-ready**
+  - vorbereitete GitHub Action (u. a. für Tests / Coverage)
+
 
 ## Struktur
 
@@ -31,54 +49,97 @@ lib/
   shared/
     extensions/            # shared extensions
     theme/                 # Theme-Stubs, Tokens, ggf. Widgets
-    router/                # shared router
 main.dart                  # App-Start
 ```
 
-## Layer-Regeln (Empfehlung):
+## Layer-Regeln (durch Custom-Lint enforced)
+1. #### shared/ ist unabhängig
+- Darf NICHT importieren:
+  - lib/app/...
+  - lib/features/...
+- Darf importieren:
+  - lib/shared/...
+  - Flutter / 3rd-Party Packages
+  - lib/l10n/... (falls benötigt)
+- 👉 shared ist deine Werkzeugkiste: Farben, Theme, Widgets, Extensions, Utils.
+Die Werkzeugkiste weiß nicht, wer sie benutzt.
+2. #### Features kennen sich nicht untereinander
+- Files in lib/features/<featureName>/... dürfen:
+  - ✅ lib/shared/... importieren
+  - ✅ lib/app/... importieren (z. B. Router-Extension, Routen)
+  - ❌ KEINE anderen Features importieren, also kein:
+  -lib/features/otherFeature/...
+- 👉 Jedes Feature ist ein Fachbereich (Home, Settings, Auth, …). Wenn zwei Features etwas gemeinsam brauchen, gehört es nach shared/.
+3. #### app/ ist der Master / Composition Root
+- lib/app/... darf alles importieren: shared/, features/, l10n/
+- Hier sitzt:
+  - MyApp / MaterialApp.router
+  - AutoRoute-Setup
+  - DI (configureDependencies())
+- 👉 app ist der Dirigent, der alles zusammensetzt.
 
-- **app** → darf **shared, features, l10n** importieren
-- **features** → darf nur **shared, l10n** importieren
-- **shared** → darf nur **l10n** importieren
 
 ## Getting Started
 
-In dem Template wird eine Flutter Version bereits gesetzt. Diese findest du in der [.fvmrc](.fvmrc). Damit FVM auch korrekt funktionert, vorher mit `fvm use` die Flutter Version installieren.
-
-#### Bevor du die folgenden Befehle ausführt:
-
-- In [pubspec.yaml](pubspec.yaml) name: auf deinen Package-Namen ändern!
-- ggf. Imports von `package:flutter_arch_starter/` auf deinen Namen anpassen. Am besten mit **Search & Replace**.
-
+Dieses Template nutzt [FVM](https://fvm.app), um die Flutter-Version zu fixieren.
+Die verwendete Flutter-Version steht in der Datei [.fvmrc](.fvmrc).
+1. #### Flutter-Version via FVM setzen
 ```bash
-# 1) Dependencies holen
-flutter pub get
-
-# 2) Codegen laufen lassen (AutoRoute, Freezed, Injectable)
-dart run build_runner build -d
-
-# 3) App starten, evtl mit `flutter create` Projekt erstellen.  
-flutter run
-
+fvm use
 ```
+
+(Installiert / aktiviert die Version aus .fvmrc.)
+ 
+2. #### Package-Namen anpassen
+In pubspec.yaml:
+```yaml
+name: flutter_arch_starter # <-- TODO rename after using the template
+```
+`name`: auf deinen Wunsch-Paketnamen ändern.  
+Alle `package:flutter_arch_starter/...` Imports via Search & Replace anpassen.
+
+3. #### Dependencies installieren
+```bash
+flutter pub get
+```
+oder per dart:
+```bash
+dart pub get
+```
+
+4. #### Codegenerierung (AutoRoute, Freezed, Injectable)
+```bash
+dart run build_runner build --delete-conflicting-outputs
+```
+5. App starten
+```bash
+flutter run
+```
+oder über VsCode [launch.json](.vscode/launch.json).
 
 ## Lokalisierung (l10n)
-
-- ARBs liegen unter `lib/l10n/arb/` (z. B. app_en.arb, app_de.arb)
-- Der Generator schreibt nach `lib/l10n/generated/`
-- Import überall (Features, Shared, App):
-    ```dart 
-    import 'package:flutter_arch_starter/l10n/generated/app_localizations.dart';
-    ```
-- In MaterialApp.router sind Delegates/Locales bereits verdrahtet.
-
-Key-Namensräume (Best Practice):
-```arb
-{
-  "homeTitle": "Welcome",
-  "exampleTitle": "Example"
-}
+- ARB-Dateien liegen unter:
 ```
+lib/l10n/arb/
+  app_en.arb
+  app_de.arb
+  ...
+```
+- Generierter Code landet in:
+
+```
+lib/l10n/generated/
+  app_localizations.dart
+  ...
+```
+- Typischer Import (überall erlaubt: app, features, shared):
+```dart
+import 'package:dein_package_name/l10n/generated/app_localizations.dart';
+
+final text = context.l10n.homeTitle;
+```
+
+MaterialApp.router ist bereits mit Delegates/Locales verdrahtet.
 
 ## Routing (AutoRoute)
 
@@ -90,7 +151,6 @@ Zugriff im Widget über GetIt, damit Mocken im Test gewährleistet wird:
     context.appRouter.push(const ExampleDetailsRoute(id: '42'));
 ```
 
-Damit keine Abhängigkeit von AutorRoute sowie [app/](lib/app/) besteht, gibt es den [IRouter](lib/shared/router/i_router.dart). Ein Interface, was die gängigen Router Funktionen bereitstellt. In [app/](lib/app/) gibt es daraufhin einen [AppRouterAdapter](lib/app/routes/app_router_adapter.dart) der das Interface auf deinen Router mapped.
 
 ## Dependency Injection
 
@@ -102,16 +162,53 @@ In Tests pro Suite Scope setzen & Mocks registrieren:
 setUp(() {
   getIt.registerSingleton<MyRepo>(MockRepo());
 });
-
-// Don't forget to tear down getIt.
-tearDown(() async => getIt.reset());
 ```
+Ein Reset ist nicht von nöten, da es eine globale Test Config gibt.
+
 
 ## State-Management ([Bloc](https://pub.dev/packages/flutter_bloc))
 
-Als State-Management wurde Bloc ausgewählt. Es ist, verglichen mit anderen Patterns, das leichteste sowie robusteste. Aufgrund seiner ausführlichen Dokumentation, sind in diesem Template keine Beispiele vorhanden. Diese findest du [hier](https://bloclibrary.dev/).
+Dieses Template geht von flutter_bloc als State-Management aus.
+Bloc, Cubit etc. liegen typischerweise in den jeweiligen Features:
+`lib/features/example/presentation/bloc/...`  
+
+Tests mit bloc_test + mocktail sind vorgesehen.   
+Die offizielle Doku & Beispiele findest du hier:   
+- Bloc-Package: https://pub.dev/packages/flutter_bloc.  
+- Doku: https://bloclibrary.dev
 
 ## [Freezed](https://pub.dev/packages/freezed)
 
 - Models/Unions via freezed_annotation + freezed
 - Generator läuft mit build_runner
+
+## Custom Lints (custom_lint + my_app_lints)
+Dieses Template bringt ein eigenes Lint-Package mit ([packages/my_app_lints](packages/my_app_lints/)), das via [custom_lint](https://pub.dev/packages/custom_lint) eingebunden ist.   
+
+Aktuell enforced es:
+- shared ist unabhängig
+  - Files in lib/shared/... dürfen keine Imports auf lib/app/... oder lib/features/... haben.  
+
+  Ziel: shared/ bleibt wiederverwendbar und cyclen-frei.
+
+- Features kennen sich nicht
+  - Files in lib/features/<featureName>/... dürfen nicht lib/features/<anderesFeatureName>/... importieren.
+
+  Import ins eigene Feature (relativ oder package:.../features/<featureName>/...) ist erlaubt.  
+  Ziel: Features bleiben modular; geteilte Logik wandert nach shared/.  
+  app/ wird durch die Lints bewusst nicht eingeschränkt – es ist der Composition Root und darf alles kennen.
+
+- Desweiteren ist durch die Regel `SpecifyTypeInFields` es verpflichtend, einen Typ zu setzen.
+- Lints im Terminal ausführen:
+  ```bash
+  dart run custom_lint
+  ```
+
+## About
+Dieses Template ist Work in Progress und bewusst “mein persönlicher Stil” für Flutter-Architektur:
+- klare Struktur
+- sinnvolle, aber nicht übertriebene Abstraktionen
+- Custom-Lints, die helfen, das Projekt langfristig sauber zu halten
+- trotzdem pragmatisch genug, um AutoRoute & Co. nicht kaputt zu designen
+
+Feedback, Issues und PRs sind jederzeit willkommen. ✌️
