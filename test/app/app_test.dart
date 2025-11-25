@@ -19,7 +19,7 @@ void main() {
 
   testWidgets('expect App wires delegates/locales', (tester) async {
     await tester.pumpWidget(const App());
-    final app = tester.widget<MaterialApp>(find.byType(MaterialApp).first);
+    final MaterialApp app = tester.widget<MaterialApp>(find.byType(MaterialApp).first);
     expect(app.localizationsDelegates, isNotNull);
     expect(AppLocalizations.supportedLocales, contains(const Locale('de')));
   });

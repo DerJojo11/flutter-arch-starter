@@ -4,7 +4,8 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Spacings', () {
-    final cases = <({Spacings spacing, String name, double value})>[
+    final List<({String name, Spacings spacing, double value})> cases =
+        <({Spacings spacing, String name, double value})>[
       (spacing: Spacings.extraSmall, name: 'extraSmall', value: 4.0),
       (spacing: Spacings.small, name: 'small', value: 8.0),
       (spacing: Spacings.medium, name: 'medium', value: 16.0),
@@ -19,7 +20,7 @@ void main() {
     });
 
     test('expect no duplicate numeric values', () {
-      final set = <double>{};
+      final Set<double> set = <double>{};
       for (final c in cases) {
         set.add(c.value);
       }

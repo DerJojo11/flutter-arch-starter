@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_arch_starter/app/routes/app_router.dart';
+import 'package:flutter_arch_starter/app/index.dart';
 import 'package:flutter_arch_starter/l10n/generated/app_localizations.dart';
-import 'package:flutter_arch_starter/shared/get_it.dart';
-import 'package:flutter_arch_starter/shared/theme/blocs/theme/theme_bloc.dart';
-import 'package:flutter_arch_starter/shared/theme/widgets/app_theme.dart';
+import 'package:flutter_arch_starter/shared/index.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -29,7 +27,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
       ],
       child: AppTheme(
         builder: (context, theme) => MaterialApp.router(
-          routerConfig: getIt<AppRouter>().config(),
+          routerConfig: context.appRouter.config(),
           theme: theme,
           localizationsDelegates: const [
             AppLocalizations.delegate,

@@ -2,7 +2,6 @@ export 'extensions/build_context_extension.dart';
 export 'extensions/edge_insets_extension.dart';
 export 'extensions/widget_extension.dart';
 export 'get_it.dart';
-export 'router/i_router.dart';
 export 'theme/blocs/theme/theme_bloc.dart';
 export 'theme/tokens/color_tokens.dart';
 export 'theme/tokens/spacings.dart';

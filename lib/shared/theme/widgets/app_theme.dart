@@ -29,7 +29,7 @@ class _AppThemeState extends State<AppTheme> with WidgetsBindingObserver {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final brightness = MediaQuery.of(context).platformBrightness;
+    final Brightness brightness = MediaQuery.of(context).platformBrightness;
 
     context.read<ThemeBloc>().add(
           ThemeEvent.changeAppearance(brightness: brightness),

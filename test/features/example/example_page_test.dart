@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_arch_starter/app/routes/app_router.dart';
 import 'package:flutter_arch_starter/app/routes/app_router.gr.dart';
 import 'package:flutter_arch_starter/features/example/example_page.dart';
 import 'package:flutter_arch_starter/shared/index.dart';
@@ -26,12 +27,12 @@ void main() {
   });
 
   testWidgets('verify tap on $FloatingActionButton will push to $ExampleDetailsRoute', (tester) async {
-    final MockAppRouterAdapter mockAppRouter = MockAppRouterAdapter();
+    final MockAppRouter mockAppRouter = MockAppRouter();
     final ExampleDetailsRoute expectedRoute = ExampleDetailsRoute(id: '42');
     when(() => mockAppRouter.push(expectedRoute)).thenAnswer((_) async {
       return null;
     });
-    getIt.registerSingleton<IRouter>(mockAppRouter);
+    getIt.registerSingleton<AppRouter>(mockAppRouter);
 
     await tester.pumpApp(const ExamplePage());
     await tester.tap(find.byType(FloatingActionButton));

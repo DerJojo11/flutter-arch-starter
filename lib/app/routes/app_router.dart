@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_arch_starter/app/routes/app_router.gr.dart';
+import 'package:flutter_arch_starter/shared/get_it.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
@@ -18,4 +20,8 @@ class AppRouter extends RootStackRouter {
   List<AutoRouteGuard> get guards => [
         // optionally add root guards here
       ];
+}
+
+extension AppRouterContextExtension on BuildContext {
+  AppRouter get appRouter => getIt<AppRouter>();
 }

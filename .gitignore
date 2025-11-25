@@ -42,9 +42,14 @@ analysis_benchmark.json
 
 # Flutter/Dart/Pub related
 **/doc/api/
+**/ios/Flutter/.last_build_id
 .dart_tool/
-.flutter-plugins
 .flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
 **/generated_plugin_registrant.dart
 .packages
 .pub-preload-cache/

@@ -49,8 +49,8 @@ void main() {
     });
 
     test('expect “all” sets the same value everywhere', () {
-      const s = Spacings.medium;
-      final p = EdgeInsetsExtension.padding(all: s);
+      const Spacings s = Spacings.medium;
+      final EdgeInsets p = EdgeInsetsExtension.padding(all: s);
       expect(p, EdgeInsets.all(s.value));
       expect(p.left, s.value);
       expect(p.top, s.value);
@@ -59,8 +59,8 @@ void main() {
     });
 
     test('expect only “horizontal” sets left/right, top/bottom remain 0', () {
-      const h = Spacings.small;
-      final p = EdgeInsetsExtension.padding(horizontal: h);
+      const Spacings h = Spacings.small;
+      final EdgeInsets p = EdgeInsetsExtension.padding(horizontal: h);
       expect(p.left, h.value);
       expect(p.right, h.value);
       expect(p.top, 0);
@@ -69,8 +69,8 @@ void main() {
     });
 
     test('expect only “vertical” sets top/bottom, left/right remain 0', () {
-      const v = Spacings.large;
-      final p = EdgeInsetsExtension.padding(vertical: v);
+      const Spacings v = Spacings.large;
+      final EdgeInsets p = EdgeInsetsExtension.padding(vertical: v);
       expect(p.top, v.value);
       expect(p.bottom, v.value);
       expect(p.left, 0);
@@ -79,12 +79,13 @@ void main() {
     });
 
     test('expect individual values are set correctly, remainder remains 0', () {
-      const l = Spacings.extraSmall;
-      const t = Spacings.small;
-      const r = Spacings.medium;
-      const b = Spacings.large;
+      const Spacings l = Spacings.extraSmall;
+      const Spacings t = Spacings.small;
+      const Spacings r = Spacings.medium;
+      const Spacings b = Spacings.large;
 
-      final p = EdgeInsetsExtension.padding(left: l, top: t, right: r, bottom: b);
+      final EdgeInsets p = EdgeInsetsExtension.padding(left: l, top: t, right: r, bottom: b);
+
       expect(
           p,
           EdgeInsets.only(
@@ -96,10 +97,10 @@ void main() {
     });
 
     test('expect individual value overrides group value: left overrides horizontal', () {
-      const h = Spacings.medium;
-      const l = Spacings.small;
+      const Spacings h = Spacings.medium;
+      const Spacings l = Spacings.small;
 
-      final p = EdgeInsetsExtension.padding(horizontal: h, left: l);
+      final EdgeInsets p = EdgeInsetsExtension.padding(horizontal: h, left: l);
       expect(p.left, l.value); // override greift
       expect(p.right, h.value); // von horizontal
       expect(p.top, 0);
@@ -107,10 +108,10 @@ void main() {
     });
 
     test('expect individual value overrides group value: top overrides vertical', () {
-      const v = Spacings.medium;
-      const t = Spacings.large;
+      const Spacings v = Spacings.medium;
+      const Spacings t = Spacings.large;
 
-      final p = EdgeInsetsExtension.padding(vertical: v, top: t);
+      final EdgeInsets p = EdgeInsetsExtension.padding(vertical: v, top: t);
       expect(p.top, t.value); // override greift
       expect(p.bottom, v.value); // von vertical
       expect(p.left, 0);
@@ -118,7 +119,7 @@ void main() {
     });
 
     test('expect Zero fallbacks: pages that are not set fall back to 0', () {
-      final p = EdgeInsetsExtension.padding(left: Spacings.small);
+      final EdgeInsets p = EdgeInsetsExtension.padding(left: Spacings.small);
       expect(p.left, Spacings.small.value);
       expect(p.top, 0);
       expect(p.right, 0);

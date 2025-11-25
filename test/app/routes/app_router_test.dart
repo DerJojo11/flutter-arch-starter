@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route_generator/utils.dart';
 import 'package:flutter_arch_starter/app/index.dart';
-import 'package:flutter_arch_starter/app/routes/app_router.gr.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
