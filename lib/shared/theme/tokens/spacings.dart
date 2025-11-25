@@ -5,6 +5,6 @@ enum Spacings {
   large(24.0),
   extraLarge(32.0);
 
-  final double value;
   const Spacings(this.value);
+  final double value;
 }

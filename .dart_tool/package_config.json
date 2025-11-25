@@ -14,6 +14,12 @@
       "languageVersion": "3.7"
     },
     {
+      "name": "analyzer_plugin",
+      "rootUri": "file:///Users/johannesalecke/.pub-cache/hosted/pub.dev/analyzer_plugin-0.13.7",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
       "name": "ansicolor",
       "rootUri": "file:///Users/johannesalecke/.pub-cache/hosted/pub.dev/ansicolor-2.0.3",
       "packageUri": "lib/",
@@ -110,10 +116,22 @@
       "languageVersion": "3.8"
     },
     {
+      "name": "ci",
+      "rootUri": "file:///Users/johannesalecke/.pub-cache/hosted/pub.dev/ci-0.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "cli_config",
       "rootUri": "file:///Users/johannesalecke/.pub-cache/hosted/pub.dev/cli_config-0.2.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "cli_util",
+      "rootUri": "file:///Users/johannesalecke/.pub-cache/hosted/pub.dev/cli_util-0.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
     },
     {
       "name": "clock",
@@ -156,6 +174,30 @@
       "rootUri": "file:///Users/johannesalecke/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "custom_lint",
+      "rootUri": "file:///Users/johannesalecke/.pub-cache/hosted/pub.dev/custom_lint-0.8.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "custom_lint_builder",
+      "rootUri": "file:///Users/johannesalecke/.pub-cache/hosted/pub.dev/custom_lint_builder-0.8.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "custom_lint_core",
+      "rootUri": "file:///Users/johannesalecke/.pub-cache/hosted/pub.dev/custom_lint_core-0.8.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "custom_lint_visitor",
+      "rootUri": "file:///Users/johannesalecke/.pub-cache/hosted/pub.dev/custom_lint_visitor-1.0.0+8.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "dart_style",
@@ -374,6 +416,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "my_app_lints",
+      "rootUri": "../packages/my_app_lints",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "nested",
       "rootUri": "file:///Users/johannesalecke/.pub-cache/hosted/pub.dev/nested-1.0.0",
       "packageUri": "lib/",
@@ -424,6 +472,12 @@
     {
       "name": "recase",
       "rootUri": "file:///Users/johannesalecke/.pub-cache/hosted/pub.dev/recase-4.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "rxdart",
+      "rootUri": "file:///Users/johannesalecke/.pub-cache/hosted/pub.dev/rxdart-0.28.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -534,6 +588,12 @@
       "rootUri": "file:///Users/johannesalecke/.pub-cache/hosted/pub.dev/typed_data-1.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
+    },
+    {
+      "name": "uuid",
+      "rootUri": "file:///Users/johannesalecke/.pub-cache/hosted/pub.dev/uuid-4.5.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "vector_math",

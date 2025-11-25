@@ -21,11 +21,13 @@
         "auto_route_generator",
         "bloc_test",
         "build_runner",
+        "custom_lint",
         "flutter_lints",
         "flutter_test",
         "freezed",
         "injectable_generator",
-        "mocktail"
+        "mocktail",
+        "my_app_lints"
       ]
     },
     {
@@ -171,6 +173,39 @@
         "lean_builder",
         "path",
         "source_gen"
+      ]
+    },
+    {
+      "name": "my_app_lints",
+      "version": "0.0.0",
+      "dependencies": [
+        "analyzer",
+        "analyzer_plugin",
+        "custom_lint_builder"
+      ]
+    },
+    {
+      "name": "custom_lint",
+      "version": "0.8.1",
+      "dependencies": [
+        "analyzer",
+        "analyzer_plugin",
+        "args",
+        "async",
+        "ci",
+        "cli_util",
+        "collection",
+        "custom_lint_core",
+        "freezed_annotation",
+        "json_annotation",
+        "meta",
+        "package_config",
+        "path",
+        "pub_semver",
+        "pubspec_parse",
+        "rxdart",
+        "uuid",
+        "yaml"
       ]
     },
     {
@@ -696,6 +731,94 @@
       ]
     },
     {
+      "name": "custom_lint_builder",
+      "version": "0.8.1",
+      "dependencies": [
+        "analyzer",
+        "analyzer_plugin",
+        "collection",
+        "custom_lint",
+        "custom_lint_core",
+        "custom_lint_visitor",
+        "glob",
+        "hotreloader",
+        "meta",
+        "package_config",
+        "path",
+        "pubspec_parse",
+        "rxdart"
+      ]
+    },
+    {
+      "name": "analyzer_plugin",
+      "version": "0.13.7",
+      "dependencies": [
+        "analyzer",
+        "collection",
+        "dart_style",
+        "path",
+        "pub_semver",
+        "yaml"
+      ]
+    },
+    {
+      "name": "uuid",
+      "version": "4.5.2",
+      "dependencies": [
+        "crypto",
+        "fixnum",
+        "meta"
+      ]
+    },
+    {
+      "name": "rxdart",
+      "version": "0.28.0",
+      "dependencies": []
+    },
+    {
+      "name": "pubspec_parse",
+      "version": "1.5.0",
+      "dependencies": [
+        "checked_yaml",
+        "collection",
+        "json_annotation",
+        "pub_semver",
+        "yaml"
+      ]
+    },
+    {
+      "name": "custom_lint_core",
+      "version": "0.8.1",
+      "dependencies": [
+        "analyzer",
+        "analyzer_plugin",
+        "collection",
+        "custom_lint_visitor",
+        "glob",
+        "matcher",
+        "meta",
+        "package_config",
+        "path",
+        "pubspec_parse",
+        "source_span",
+        "uuid",
+        "yaml"
+      ]
+    },
+    {
+      "name": "cli_util",
+      "version": "0.4.2",
+      "dependencies": [
+        "meta",
+        "path"
+      ]
+    },
+    {
+      "name": "ci",
+      "version": "0.1.0",
+      "dependencies": []
+    },
+    {
       "name": "provider",
       "version": "6.1.5+1",
       "dependencies": [
@@ -739,17 +862,6 @@
       "dependencies": [
         "meta",
         "path"
-      ]
-    },
-    {
-      "name": "pubspec_parse",
-      "version": "1.5.0",
-      "dependencies": [
-        "checked_yaml",
-        "collection",
-        "json_annotation",
-        "pub_semver",
-        "yaml"
       ]
     },
     {
@@ -920,6 +1032,13 @@
       "name": "xxh3",
       "version": "1.2.0",
       "dependencies": []
+    },
+    {
+      "name": "custom_lint_visitor",
+      "version": "1.0.0+8.1.1",
+      "dependencies": [
+        "analyzer"
+      ]
     },
     {
       "name": "nested",
