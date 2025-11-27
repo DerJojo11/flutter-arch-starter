@@ -28,7 +28,9 @@ jobs:
         run: dart pub get
 
       - name: Analyze project source
-        run: flutter analyze
+        run: 
+          flutter analyze
+          dart run custom_lint
 
       - name: Run tests
         run: flutter test --coverage
