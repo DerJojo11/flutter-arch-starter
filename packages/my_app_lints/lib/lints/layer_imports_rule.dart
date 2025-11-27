@@ -6,7 +6,7 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 class LayerImportsRule extends DartLintRule {
   const LayerImportsRule() : super(code: _baseCode);
-  static const _baseCode = LintCode(
+  static const LintCode _baseCode = LintCode(
     name: 'invalid_layer_import',
     problemMessage: 'Ungültiger Import zwischen app/shared/features.',
     correctionMessage: 'Regeln: shared ist unabhängig, Features kennen sich nicht gegenseitig.',
@@ -19,27 +19,29 @@ class LayerImportsRule extends DartLintRule {
     DiagnosticReporter reporter,
     CustomLintContext context,
   ) {
-    final rawPath = resolver.source.fullName;
-    final path = rawPath.replaceAll(r'\', '/'); // Windows-safe
+    final String rawPath = resolver.source.fullName;
 
-    final layerInfo = _detectLayer(path);
+    // Windows-safe
+    final String path = rawPath.replaceAll(r'\', '/');
+
+    final _LayerInfo? layerInfo = _detectLayer(path);
     if (layerInfo == null) return;
 
-    final layer = layerInfo.layer;
-    final featureName = layerInfo.featureName;
+    final String layer = layerInfo.layer;
+    final String? featureName = layerInfo.featureName;
 
     context.registry.addImportDirective((ImportDirective node) {
-      final uri = node.uri.stringValue;
+      final String? uri = node.uri.stringValue;
       if (uri == null) return;
 
-      final violation = _checkViolation(
+      final String? violation = _checkViolation(
         layer: layer,
         featureName: featureName,
         uri: uri,
       );
       if (violation == null) return;
 
-      final code = LintCode(
+      final LintCode code = LintCode(
         name: _baseCode.name,
         problemMessage: violation,
         correctionMessage: _baseCode.correctionMessage,
@@ -52,10 +54,10 @@ class LayerImportsRule extends DartLintRule {
 
   /// Erkennt Layer + ggf. Feature-Namen anhand des Dateipfads.
   _LayerInfo? _detectLayer(String path) {
-    final libIndex = path.indexOf('/lib/');
+    final int libIndex = path.indexOf('/lib/');
     if (libIndex == -1) return null;
 
-    final relative = path.substring(libIndex + '/lib/'.length);
+    final String relative = path.substring(libIndex + '/lib/'.length);
 
     if (relative.startsWith('shared/')) {
       return _LayerInfo(layer: 'shared');
@@ -63,11 +65,11 @@ class LayerImportsRule extends DartLintRule {
 
     if (relative.startsWith('features/')) {
       // Struktur: features/<featureName>/...
-      final rest = relative.substring('features/'.length);
-      final slashIndex = rest.indexOf('/');
+      final String rest = relative.substring('features/'.length);
+      final int slashIndex = rest.indexOf('/');
       if (slashIndex == -1) return _LayerInfo(layer: 'features');
 
-      final featureName = rest.substring(0, slashIndex);
+      final String featureName = rest.substring(0, slashIndex);
       return _LayerInfo(layer: 'features', featureName: featureName);
     }
 
@@ -103,9 +105,9 @@ class LayerImportsRule extends DartLintRule {
       return null;
     }
 
-    final importsApp = uri.contains('/app/');
-    final importsShared = uri.contains('/shared/');
-    final importsFeatures = uri.contains('/features/');
+    final bool importsApp = uri.contains('/app/');
+    final bool importsShared = uri.contains('/shared/');
+    final bool importsFeatures = uri.contains('/features/');
 
     switch (layer) {
       case 'shared':
@@ -127,8 +129,8 @@ class LayerImportsRule extends DartLintRule {
         if (importsFeatures) {
           // Wenn wir den Feature-Namen kennen, prüfen wir, ob es ein anderes ist
           if (featureName != null) {
-            final selfPattern = '/features/$featureName/';
-            final isSelf = uri.contains(selfPattern);
+            final String selfPattern = '/features/$featureName/';
+            final bool isSelf = uri.contains(selfPattern);
             if (!isSelf) {
               return 'Files in lib/features/$featureName/ dürfen keine '
                   'anderen Features unter lib/features/... importieren.';

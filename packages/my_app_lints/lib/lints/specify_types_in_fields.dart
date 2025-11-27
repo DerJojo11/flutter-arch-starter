@@ -14,7 +14,7 @@ class SpecifyTypeInFields extends DartLintRule {
 
   /// Metadata about the warning that will show-up in the IDE.
   /// This is used for `// ignore: code` and enabling/disabling the lint
-  static const _code = LintCode(
+  static const LintCode _code = LintCode(
     name: 'specify_type_in_fields',
     problemMessage: 'Always specify types for fields.',
     correctionMessage: 'Specifying types for fields improves code clarity and safety.',
@@ -56,7 +56,7 @@ class AddTypeFix extends DartFix {
 
         // `return` if the current method is not where the lint
         // error has appeared
-        final sourceRange = SourceRange(
+        final SourceRange sourceRange = SourceRange(
           variable.offset,
           variable.length,
         );
