@@ -21,6 +21,9 @@ dependencies:
   intl: 0.20.2
 
 dev_dependencies:
+  custom_lint: 0.8.1
+  my_app_lints:
+    path: "packages/my_app_lints"
   auto_route_generator: 10.2.5
   bloc_test: 10.0.0
   build_runner: 2.10.1

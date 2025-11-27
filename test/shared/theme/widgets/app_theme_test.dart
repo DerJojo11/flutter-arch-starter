@@ -19,7 +19,7 @@ void main() {
 
   Future<void> pumpWidget(WidgetTester tester) async {
     await tester.pumpWidget(MediaQuery(
-      data: const MediaQueryData(platformBrightness: Brightness.light),
+      data: const MediaQueryData(),
       child: BlocProvider<ThemeBloc>.value(
         value: mockThemeBloc,
         child: AppTheme(

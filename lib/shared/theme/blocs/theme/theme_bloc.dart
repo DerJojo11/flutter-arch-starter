@@ -13,7 +13,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
     on<_ChangeAppearance>(_onChangeAppearance);
   }
 
-  FutureOr<void> _onChangeAppearance(event, emit) {
+  FutureOr<void> _onChangeAppearance(ThemeEvent event, Emitter emit) {
     switch (event.brightness) {
       case Brightness.dark:
         emit(const ThemeState.dark());

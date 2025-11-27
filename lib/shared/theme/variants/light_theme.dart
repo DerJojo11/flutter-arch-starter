@@ -15,6 +15,5 @@ ThemeData get lightTheme {
 ColorScheme get _colorScheme {
   return ColorScheme.fromSeed(
     seedColor: ColorTokens.blue,
-    brightness: Brightness.light,
   );
 }
